@@ -4,14 +4,15 @@ import os
 # Informática - 1° ano - manhã
 # CAIO WESLEY, PEDRO LUCAS E YURI TEIXEIRA
 
-
-
 def exibir(lista):
-    for indice, item in enumerate(lista):
-        print(f'{indice + 1}. {item}')
+    if len(lista) > 0:
+        for indice, item in enumerate(lista):
+            print(f'{indice + 1}. {item}')
+    else:
+        print('Agenda de tarefas vazia.')
 
 def substituir(lista, indice):
-    atualizacao = input('').strip().capitalize()
+    atualizacao = input(f'O que deseja por no índice {indice}? ').strip().capitalize()
     lista[indice - 1] = atualizacao
 
 def deletar(lista, indice):
@@ -26,32 +27,38 @@ while True:
         print('Opção inválida.')
         os.system('cls')
         continue
-    elif opcao == 'C':
-        os.system('cls')
-        tarefa = input('Insira a tarefa que deseja adicionar: ').strip().capitalize()
-        atividades.append(tarefa)
-    elif opcao == 'L':
-        os.system('cls')
-        print('Exibindo as tarefas registradas:')
-        exibir(atividades)
-    elif opcao == 'S':
-        os.system('cls')
-        print('Qual o índice da lista quer substituir? (Começando do 1.)')
-        indice = int(input())
-        try:
-            substituir(atividades, indice)
-        except:
-            print('Índice inválido.')
-            continue
-        print(f'Atualizando o item {indice}. {atividades[indice]}.')
-    elif opcao == 'D':
-        os.system('cls')
-        print('Insira o índice do item que deseja deletar: ')
-        indice = int(input())
-        print(f'Deletando o item {indice}. {atividades[indice - 1]}.')
-        try:
-            deletar(atividades, indice)
-        except:
-            print('Índice inválido.')
+
+    match opcao:
+        case 'C':
             os.system('cls')
-            continue
+            tarefa = input('Insira a tarefa que deseja adicionar: ').strip().capitalize()
+            atividades.append(tarefa)
+        case 'L':
+            os.system('cls')
+            print('Exibindo as tarefas registradas:')
+            exibir(atividades)
+        case 'S':
+            os.system('cls')
+            exibir(atividades)
+            if len(atividades) == 0:
+                continue
+            print('Qual o índice da lista quer substituir? (Começando do 1.)')
+            indice = int(input())
+            try:
+                substituir(atividades, indice)
+            except:
+                print('Índice inválido.')
+                continue
+            os.system('cls')
+            print(f'Atualizando o item {indice}. {atividades[indice]}.')
+        case 'D':
+            os.system('cls')
+            print('Insira o índice do item que deseja deletar: ')
+            indice = int(input())
+            print(f'Deletando o item {indice}. {atividades[indice - 1]}.')
+            try:
+                deletar(atividades, indice)
+            except:
+                print('Índice inválido.')
+                os.system('cls')
+                continue
