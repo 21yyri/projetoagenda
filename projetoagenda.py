@@ -1,5 +1,7 @@
 import os
 # AGENDA DE TAREFAS LOCAL
+# Introdução a Programação
+# Informática - 1° ano - manhã
 # CAIO WESLEY, PEDRO LUCAS E YURI TEIXEIRA
 
 
