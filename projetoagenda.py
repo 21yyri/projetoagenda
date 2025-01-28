@@ -8,21 +8,32 @@ def exibir(lista):
     if len(lista) > 0:
         for indice, item in enumerate(lista):
             print(f'{indice + 1}. {item}')
+            if descricoes[indice] != None:
+                print(f'  ┗ {descricoes[indice]}')
     else:
         print('Agenda de tarefas vazia.')
 
-def substituir(lista, indice):
+# TA DANDO ERRO NA SUBSTITUIÇÃO DO PRIMEIRO ÍNDICE
+def substituir(lista, indice, desc):
     atualizacao = input(f'O que deseja por no índice {indice}? ').strip().lower().capitalize()
-    lista[indice - 1] = atualizacao
+    lista[indice] = atualizacao
+    opcao = input('Deseja atualizar a descrição? ')
+    if opcao == 'S':
+        desc[indice - 1] = input('Digite a nova descrição: \n')
+    else:
+        desc[indice - 1] = None
 
-def deletar(lista, indice):
+
+def deletar(lista, indice, desc):
     try:
         del lista[indice - 1]
+        del desc[indice - 1]
     except:
         print('Índice inválido.')
 
 
 atividades = []
+descricoes = []
 while True:
     print('Esta é uma agenda virtual.')
     opcao = input('Selecione entre (C)riar, (L)er, (S)ubstituir e (D)eletar.').upper().strip()[0]
@@ -36,6 +47,15 @@ while True:
             os.system('cls')
             tarefa = input('Insira a tarefa que deseja adicionar: ').strip().capitalize()
             atividades.append(tarefa)
+            escolha = input('Deseja escrever uma breve descrição da atividade? (S/N) ').upper().strip()
+            if escolha == 'S':
+                descricao = input('Digite aqui a descrição da tarefa: \n')
+                descricoes.append(descricao)
+            elif escolha == 'N':
+                descricoes.append(None)
+            else:
+                print('Operação falha.')
+                atividades.pop()
         case 'L':
             os.system('cls')
             print('Exibindo as tarefas registradas:')
@@ -48,7 +68,7 @@ while True:
             print('Qual o índice da lista quer substituir? (Começando do 1.)')
             indice = int(input())
             try:
-                substituir(atividades, indice)
+                substituir(atividades, indice - 1)
             except:
                 print('Índice inválido.')
                 continue
@@ -60,7 +80,7 @@ while True:
             print('Insira o índice do item que deseja deletar: ')
             indice = int(input())
             try:
-                deletar(atividades, indice)
+                deletar(atividades, indice, descricoes)
                 print(f'Deletando o item {indice}. {atividades[indice - 1]}.')
             except:
                 continue
