@@ -16,7 +16,10 @@ def substituir(lista, indice):
     lista[indice - 1] = atualizacao
 
 def deletar(lista, indice):
-    del lista[indice - 1]
+    try:
+        del lista[indice - 1]
+    except:
+        print('Índice inválido.')
 
 
 atividades = []
@@ -50,15 +53,14 @@ while True:
                 print('Índice inválido.')
                 continue
             os.system('cls')
-            print(f'Atualizando o item {indice}. {atividades[indice]}.')
+            print(f'Atualizando o item {indice}. {atividades[indice - 1]}.')
         case 'D':
             os.system('cls')
+            exibir(atividades)
             print('Insira o índice do item que deseja deletar: ')
             indice = int(input())
-            print(f'Deletando o item {indice}. {atividades[indice - 1]}.')
             try:
                 deletar(atividades, indice)
+                print(f'Deletando o item {indice}. {atividades[indice - 1]}.')
             except:
-                print('Índice inválido.')
-                os.system('cls')
                 continue
