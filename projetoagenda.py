@@ -2,7 +2,7 @@ import os
 # AGENDA DE TAREFAS LOCAL
 # Introdução a Programação
 # Informática - 1° ano - manhã
-# CAIO WESLEY, PEDRO LUCAS E YURI TEIXEIRA
+# CAIO WESLEY, PEDRO LUCAS, DIEGO VINICIUS E YURI TEIXEIRA
 
 def exibir(lista):
     if len(lista) > 0:
@@ -12,7 +12,7 @@ def exibir(lista):
         print('Agenda de tarefas vazia.')
 
 def substituir(lista, indice):
-    atualizacao = input(f'O que deseja por no índice {indice}? ').strip().capitalize()
+    atualizacao = input(f'O que deseja por no índice {indice}? ').strip().lower().capitalize()
     lista[indice - 1] = atualizacao
 
 def deletar(lista, indice):
