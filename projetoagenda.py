@@ -8,7 +8,7 @@ def exibir(lista):
     if len(lista) > 0:
         for indice, item in enumerate(lista):
             print(f'{indice + 1}. {item}')
-            if descricoes[indice] != None:
+            if descricoes[indice] is not None:
                 print(f'  ┗ {descricoes[indice]}')
     else:
         print('Agenda de tarefas vazia.')
