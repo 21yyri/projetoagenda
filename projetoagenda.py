@@ -22,7 +22,6 @@ def substituir(lista, indice, desc):
     else:
         desc[indice - 1] = None
 
-
 def deletar(lista, indice, desc):
     try:
         del lista[indice - 1]
