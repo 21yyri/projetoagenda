@@ -13,7 +13,6 @@ def exibir(lista):
     else:
         print('Agenda de tarefas vazia.')
 
-# TA DANDO ERRO NA SUBSTITUIÇÃO DO PRIMEIRO ÍNDICE
 def substituir(lista, indice, desc):
     atualizacao = input(f'O que deseja por no índice {indice + 1}? ').strip().lower().capitalize()
     lista[indice] = atualizacao
