@@ -34,7 +34,7 @@ atividades = []
 descricoes = []
 while True:
     print('Esta é uma agenda virtual.')
-    opcao = input('Selecione entre (C)riar, (L)er, (S)ubstituir e (D)eletar.').upper().strip()[0]
+    opcao = input('Selecione entre (C)riar, (L)er, (S)ubstituir e (D)eletar.\n').upper().strip()[0]
     if opcao not in 'CLSD':
         print('Opção inválida.')
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -43,11 +43,11 @@ while True:
     match opcao:
         case 'C':
             os.system('cls' if os.name == 'nt' else 'clear')
-            tarefa = input('Insira a tarefa que deseja adicionar: ').strip().capitalize()
+            tarefa = input('Insira a tarefa que deseja adicionar:\n').strip().capitalize()
             atividades.append(tarefa)
             escolha = input('Deseja escrever uma breve descrição da atividade? (S/N) ').upper().strip()
             if escolha == 'S':
-                descricao = input('Digite aqui a descrição da tarefa: \n')
+                descricao = input('Digite aqui a descrição da tarefa:\n')
                 descricoes.append(descricao)
             elif escolha == 'N':
                 descricoes.append(None)
